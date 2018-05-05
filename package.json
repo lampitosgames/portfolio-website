@@ -1,0 +1,40 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "Portfolio website of Daniel Timko",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lampitosgames/portfolio-website.git"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "Daniel Timko (dantimko1@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lampitosgames/portfolio-website/issues"
+  },
+  "homepage": "https://github.com/lampitosgames/portfolio-website#readme",
+  "scripts": {
+    "dev": "concurrently \"npm run nodemon\" \"cd client && npm start\"",
+    "start": "node ./build/app.js",
+    "deploy": "npm run build && git add . && git commit -m\"added files for heroku build\" && git push heroku master && git push",
+    "nodemon": "nodemon --watch ./server ./server/app.js --exec babel-node",
+    "build": "npm run build-server && npm run build-client",
+    "build-server": "rm -rf build && mkdir build && babel -d ./build ./server",
+    "build-client": "cd client && rm -rf build && npm run build"
+  },
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.14.0",
+    "moment": "^2.19.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.6.5",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.16.0",
+    "nodemon": "^1.12.1",
+    "concurrently": "^3.5.1"
+  }
+}
