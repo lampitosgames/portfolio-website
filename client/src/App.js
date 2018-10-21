@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import TestComponent from './components/TestComponent.js';
 //Import scss file
-import './index.scss';
+import './scss/index.scss';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-          <TestComponent />
+      <div className={"app-container"}>
+          <div className={"sidebar-wrap sidebar-active"}>Home</div>
+          <div className={"content-wrap"}>Content</div>
       </div>
     );
   }
