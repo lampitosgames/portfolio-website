@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import TestComponent from './components/TestComponent.js';
-//Import css file
-//TODO: Add SCSS support
-import './index.css';
+//Import scss file
+import './index.scss';
 
 class App extends Component {
   render() {
