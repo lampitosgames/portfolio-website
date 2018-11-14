@@ -1,4 +1,4 @@
-import actionTypes from '../actions/actionTypes';
+//import actionTypes from '../actions/actionTypes';
 
 //This is a dummy reducer, stripped down to core code
 const initialState = {};

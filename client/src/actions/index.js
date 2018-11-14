@@ -14,3 +14,10 @@ export const decrementCounter = (_decrementAmount) => {
         amount: _decrementAmount
     };
 }
+
+export const viewportUpdate = (_newViewport) => {
+    return {
+        type: actionTypes.VIEWPORT_UPDATE,
+        newView: _newViewport
+    }
+}
