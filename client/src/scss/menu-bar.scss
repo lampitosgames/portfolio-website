@@ -1,0 +1,23 @@
+.hamburger-wrap {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #000;
+  top: 3rem;
+  left: 3rem;
+  z-index: 1;
+  transition: left 500ms ease-in-out;
+  @media (min-width: $scr-large) {
+    left: calc(7.5rem + 3rem);
+  }
+}
+
+
+.content-wrap-sidebar-active {
+    .hamburger-wrap {
+        left: calc(50% - 0.75rem);
+        @media (min-width: $scr-large) {
+            left: calc(7.5rem + 3rem);
+        }
+    }
+}

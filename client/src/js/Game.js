@@ -10,7 +10,7 @@ let lState = {
         runTime: 0,
         lastTime: 0,
         deltaTime: 0,
-        //Resets to 18 - clamp(runTime / 4, 3, 15)
+        //Resets to 18 - clamp(runTime / 4, 7, 15)
         asteroidTimer: 15
     },
     colors: {
@@ -18,7 +18,8 @@ let lState = {
         background: "#f0f0f0"
     },
     asteroids: [],
-    initAstCount: 0
+    initAstCount: 0,
+    maxAstCount: 20
 }
 
 const calculateDeltaTime = () => {
@@ -42,7 +43,7 @@ const start = () => {
             window.requestAnimationFrame(update);
             //Initially 8 asteroids for the screenspace of a 1920x1080 display. More/fewer asteroids based on screen size
             lState.initAstCount = Math.floor(Math.max(lState.canvas.width / 240, lState.canvas.height / 135));
-            for (let a=0; a < lState.initAstCount; a++) {
+            for (let a = 0; a < lState.initAstCount; a++) {
                 spawnAsteroid();
             }
         }
@@ -65,11 +66,13 @@ const update = () => {
     //Check for collisions
     for (let j = 0; j < lState.asteroids.length; j++) {
         let a1 = lState.asteroids[j];
-        for (let i = j+1; i < lState.asteroids.length; i++) {
+        for (let i = j + 1; i < lState.asteroids.length; i++) {
             let a2 = lState.asteroids[i];
-            let colResult = Utils.shapeCollision(a1, a2);
-            if (colResult != null) {
-                resolveAstCollision(a1, a2, colResult);
+            if (Utils.ccCollision(a1, a2)) {
+                let colResult = Utils.shapeCollision(a1, a2);
+                if (colResult != null) {
+                    resolveAstCollision(a1, a2, colResult);
+                }
             }
         }
     }
@@ -79,8 +82,10 @@ const update = () => {
         //Add new asteroid? Based on timer #balance
         lState.time.asteroidTimer -= lState.time.deltaTime;
         if (lState.time.asteroidTimer <= 0) {
-            lState.time.asteroidTimer = 18 - Utils.clamp(lState.time.runTime / 4, 3, 15);
-            spawnAsteroid();
+            lState.time.asteroidTimer = 18 - Utils.clamp(lState.time.runTime / 6, 3, 11);
+            if (lState.asteroids.length < lState.maxAstCount) {
+                spawnAsteroid();
+            }
         }
     }
 
@@ -112,10 +117,10 @@ const resolveAstCollision = (_a1, _a2, _result) => {
 
     //Calculate elastic collision using radius size for mass
     let mTotal = _a1.radius + _a2.radius;
-    let a1NewX = (_a1.vel.x*(_a1.radius-_a2.radius) + (2 * _a2.radius * _a2.vel.x)) / mTotal;
-    let a1NewY = (_a1.vel.y*(_a1.radius-_a2.radius) + (2 * _a2.radius * _a2.vel.y)) / mTotal;
-    let a2NewX = (_a2.vel.x*(_a2.radius-_a1.radius) + (2 * _a1.radius * _a1.vel.x)) / mTotal;
-    let a2NewY = (_a2.vel.y*(_a2.radius-_a1.radius) + (2 * _a1.radius * _a1.vel.y)) / mTotal;
+    let a1NewX = (_a1.vel.x * (_a1.radius - _a2.radius) + (2 * _a2.radius * _a2.vel.x)) / mTotal;
+    let a1NewY = (_a1.vel.y * (_a1.radius - _a2.radius) + (2 * _a2.radius * _a2.vel.y)) / mTotal;
+    let a2NewX = (_a2.vel.x * (_a2.radius - _a1.radius) + (2 * _a1.radius * _a1.vel.x)) / mTotal;
+    let a2NewY = (_a2.vel.y * (_a2.radius - _a1.radius) + (2 * _a1.radius * _a1.vel.y)) / mTotal;
     //Scale new velocity
     _a1.vel = new Vector(a1NewX, a1NewY);
     _a2.vel = new Vector(a2NewX, a2NewY);
@@ -169,7 +174,7 @@ class Asteroid {
         let degreeSpan = 360 / vertCount;
         for (let v = 0; v < vertCount; v++) {
             let newVert = new Vector(this.radius, 0);
-            newVert.rotateDeg(v*degreeSpan + Utils.randomRange(degreeSpan * 0.1, degreeSpan + 0.9));
+            newVert.rotateDeg(v * degreeSpan + Utils.randomRange(degreeSpan * 0.1, degreeSpan + 0.9));
             this.shape.addVert(newVert);
         }
     }
@@ -186,14 +191,16 @@ class Shape {
         this.verts.push(_vertPos);
     }
     draw(_ctx, _pos) {
-        if (this.verts.length < 3) { return; }
+        if (this.verts.length < 3) {
+            return;
+        }
         _ctx.save();
         _ctx.translate(_pos.x, _pos.y);
         _ctx.strokeStyle = this.color;
         _ctx.lineWidth = this.lineWeight;
         _ctx.beginPath();
         _ctx.moveTo(this.verts[0].x, this.verts[0].y);
-        for (let i=1; i<this.verts.length; i++) {
+        for (let i = 1; i < this.verts.length; i++) {
             _ctx.lineTo(this.verts[i].x, this.verts[i].y);
         }
         _ctx.closePath();

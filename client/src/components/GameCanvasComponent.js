@@ -32,7 +32,7 @@ class GameCanvasComponent extends Component {
 
     render() {
         return (
-            <canvas className={"asteroidsCanvas"} ref={this.canvasElement} width={this.props.viewport.width} height={this.props.viewport.height}/>
+            <canvas className={"asteroid-canvas"} ref={this.canvasElement} width={this.props.viewport.width} height={this.props.viewport.height}/>
         )
     }
 }

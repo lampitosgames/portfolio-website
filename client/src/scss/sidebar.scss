@@ -1,0 +1,25 @@
+@import 'media-breakpoints.scss';
+.sidebar-wrap {
+    font-family: "Noto Sans", Arial, sans-serif;
+    font-weight: bold;
+    position: fixed;
+    text-transform: uppercase;
+    z-index: 1;
+    width: 75%;
+    margin: 0;
+    padding: 90px 40px 0px 40px;
+    background-color: $color-white;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translate(-100%);
+    transition: transform 500ms ease-in-out;
+    @media (min-width: $scr-med) {
+        width: 15rem;
+    }
+}
+
+.sidebar-active {
+    transform: none;
+}

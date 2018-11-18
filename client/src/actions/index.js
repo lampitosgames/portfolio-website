@@ -19,5 +19,11 @@ export const viewportUpdate = (_newViewport) => {
     return {
         type: actionTypes.VIEWPORT_UPDATE,
         newView: _newViewport
-    }
+    };
+}
+
+export const toggleSidebar = () => {
+  return {
+    type: actionTypes.TOGGLE_SIDEBAR
+  };
 }

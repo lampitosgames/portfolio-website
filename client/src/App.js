@@ -7,6 +7,8 @@ import './scss/index.scss';
 import Utils from './js/Utils.js';
 //Import components
 import GameCanvasComponent from './components/GameCanvasComponent.js';
+import MenuBarComponent from './components/menu-bar';
+import SidebarComponent from './components/sidebar';
 
 class App extends Component {
     componentDidMount() {
@@ -22,15 +24,22 @@ class App extends Component {
         this.props.viewportUpdate(viewport);
     }
     render() {
-        //the sidebar-active class needs to be added to the sidebar-wrap div
+        let contentWrapClass = this.props.sidebarActive ? "content-wrap content-wrap-sidebar-active" : "content-wrap";
         return (
             <div className={"app-container"}>
-                <div className={"sidebar-wrap"}>Home</div>
-                <div className={"content-wrap"}>Content</div>
-                <GameCanvasComponent/>
+                <SidebarComponent sidebarActive={this.props.sidebarActive}/>
+                <div className={contentWrapClass}>
+                    <MenuBarComponent/>
+                    <div className={"site-title"}>Daniel Timko</div>
+                    <GameCanvasComponent/>
+                </div>
             </div>
         );
     }
+}
+
+const mapStateToProps = (state) => {
+    return { sidebarActive: state.sidebar.active };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -41,4 +50,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
