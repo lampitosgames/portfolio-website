@@ -1,14 +1,16 @@
 .hamburger-wrap {
-  position: relative;
+  cursor: pointer;
+  position: absolute;
   width: 1.5rem;
   height: 1.5rem;
   background-color: #000;
-  top: 3rem;
-  left: 3rem;
+  top: $sm-margin-size;
+  left: $sm-margin-size;
   z-index: 1;
-  transition: left 500ms ease-in-out;
+  transition: left 275ms ease-in-out;
   @media (min-width: $scr-large) {
-    left: calc(7.5rem + 3rem);
+      top: 3.5rem;
+      left: $large-margin-size;
   }
 }
 
@@ -16,7 +18,7 @@
 .content-wrap-sidebar-active {
     .hamburger-wrap {
         left: calc(50% - 0.75rem);
-        @media (min-width: $scr-large) {
+        @media (min-width: $scr-med) {
             left: calc(7.5rem + 3rem);
         }
     }

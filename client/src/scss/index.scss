@@ -9,9 +9,13 @@
 
 html {
     display: block;
+    //Define base rem unit
     font-size: 16px;
     height: 100%;
     font-family: "Noto Sans", Arial, sans-serif;
+    @media (min-width: $scr-large) {
+        font-size: 1vw;
+    }
 }
 
 body {
@@ -40,7 +44,7 @@ body {
     bottom: 0;
     left: 0;
     transform: none;
-    transition: transform 500ms ease-in-out;
+    transition: transform 275ms ease-in-out;
     z-index: 0;
 }
 .content-wrap-sidebar-active {
@@ -50,19 +54,43 @@ body {
     }
 }
 
+//HOME SCREEN
+
+.home-screen-wrap {
+    position: relative;
+    width: calc(100% - 3rem);
+    height: calc(100% - 3rem);
+    margin: $sm-margin-size-half;
+    padding: $sm-margin-size-half;
+    @media (min-width: $scr-med) {
+        width: calc(100% - 10.5rem);
+        height: calc(100% - 3.5rem);
+        margin: 0 $large-margin-size-half 3.5rem $large-margin-size-half;
+        padding: 3.5rem $large-margin-size-half 3.5rem $large-margin-size-half;
+    }
+}
+
 .asteroid-canvas {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: -$sm-margin-size-half; //home-screen-wrap margin size
+    left: -$sm-margin-size-half;
     z-index: -10;
+    @media (min-width: $scr-med) {
+      top: 0;
+      left: -$large-margin-size-half;
+    }
 }
 
 .site-title {
   //font-family: "Noto Sans", Arial, sans-serif;
   position: absolute;
-  bottom: 7rem;
-  left: 10rem;
   color: $color-primary;
+  text-align: center;
+  left: 0;
+  bottom: 3.5rem;
   font-weight: 600;
-  font-size: 6em;
+  font-size: 6rem;
+  @media (min-width: $scr-med) {
+    left: $large-margin-size-half;
+  }
 }

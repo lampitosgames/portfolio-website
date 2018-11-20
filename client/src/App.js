@@ -30,8 +30,10 @@ class App extends Component {
                 <SidebarComponent sidebarActive={this.props.sidebarActive}/>
                 <div className={contentWrapClass}>
                     <MenuBarComponent/>
-                    <div className={"site-title"}>Daniel Timko</div>
-                    <GameCanvasComponent/>
+                    <div className={"home-screen-wrap"}>
+                        <div className={"site-title"}>Daniel Timko</div>
+                        <GameCanvasComponent/>
+                    </div>
                 </div>
             </div>
         );
