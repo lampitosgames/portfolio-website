@@ -1,8 +1,8 @@
 //Import react/redux stuff
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 //Import all required actions to connect to this component
-import {incrementCounter, decrementCounter} from '../actions';
+import { incrementCounter, decrementCounter } from '../actions';
 
 //The test component is an example/template component
 class TestComponent extends Component {
@@ -66,3 +66,7 @@ const mapDispatchToProps = (dispatch) => {
 
 //Use redux to fully connect everything up
 export default connect(mapStateToProps, mapDispatchToProps)(TestComponent);
+
+//If this component needs access to routing data, use this:
+//import {withRouter} from 'react-router-dom'
+//export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TestComponent));
