@@ -15,7 +15,7 @@ router.use(middleware);
 router.use('/', express.static(path.join(__dirname, '..', 'client', 'build')));
 
 //Return the main HTML file when a request is made to the default path
-router.get('/', (req, res) => {
+router.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
 });
 
