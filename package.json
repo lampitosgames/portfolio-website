@@ -19,6 +19,8 @@
   "scripts": {
     "dev": "concurrently \"npm run nodemon\" \"cd client && npm start\"",
     "start": "node ./build/app.js",
+    "pretest": "eslint ./server --fix && cd client && npm test",
+    "test": "echo \"No test written\" && exit 0",
     "deploy": "npm run build && git add . && git commit -m\"added files for heroku build\" && git push heroku master && git push",
     "nodemon": "nodemon --watch ./server ./server/app.js --exec babel-node",
     "build": "npm run build-server && npm run build-client",
@@ -34,7 +36,10 @@
     "babel-cli": "^6.6.5",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.16.0",
-    "nodemon": "^1.12.1",
-    "concurrently": "^3.5.1"
+    "concurrently": "^3.5.1",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "nodemon": "^1.12.1"
   }
 }

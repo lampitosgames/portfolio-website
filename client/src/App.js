@@ -42,7 +42,6 @@ class App extends Component {
     //
     render() {
         let contentWrapClass = this.props.sidebarActive ? "content-wrap content-wrap-sidebar-active" : "content-wrap";
-        console.dir(this.props);
         return (
             <div className={"app-container"}>
                 <SidebarComponent sidebarActive={this.props.sidebarActive} location={this.props.location}/>

@@ -1,23 +1,23 @@
-//Node Modules
+// Node Modules
 import express from 'express';
 import path from 'path';
 
-//Import array of middleware functions
+// Import array of middleware functions
 import middleware from './middleware';
 
-//Get a router from express
-let router = express.Router();
+// Get a router from express
+const router = express.Router();
 
-//Hook in middleware
+// Hook in middleware
 router.use(middleware);
 
-//Serve static files for the client
+// Serve static files for the client
 router.use('/', express.static(path.join(__dirname, '..', 'client', 'build')));
 
-//Return the main HTML file when a request is made to the default path
+// Return the main HTML file when a request is made to the default path
 router.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
 });
 
-//Export the router
+// Export the router
 export default router;

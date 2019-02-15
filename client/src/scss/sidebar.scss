@@ -1,36 +1,40 @@
 @import 'media-breakpoints.scss';
 
 .sidebar-wrap {
-    font-family: "Noto Sans", Arial, sans-serif;
-    font-weight: bold;
-    position: fixed;
-    text-transform: uppercase;
-    z-index: 1;
-    width: 75%;
-    margin: 0;
-    padding: 90px 40px 0;
-    background-color: $color-white;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    transform: translate(-100%);
-    transition: transform 275ms ease-in-out;
-    @media (min-width: $scr-med) {
-        width: 15rem;
-    }
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-weight: bold;
+  position: fixed;
+  text-transform: uppercase;
+  z-index: 1;
+  width: 75%;
+  margin: 0;
+  padding: 90px 40px 0;
+  background-color: $color-white;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translate(-100%);
+  transition: transform 275ms ease-in-out;
+  @media (min-width: $scr-med) {
+    width: 15rem;
+  }
 }
 
 .sidebar-active {
-    transform: none;
+  transform: none;
 }
 
 .nav-link {
-    text-decoration: none;
-    display: block;
-    color: $color-dark;
+  text-decoration: none;
+  display: block;
+  color: $color-dark;
+}
+
+.nav-link:hover {
+  color: $color-dark-accent;
 }
 
 .nav-link-active {
-    color: $color-primary;
+  color: $color-primary;
 }

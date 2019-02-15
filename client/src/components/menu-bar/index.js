@@ -1,16 +1,18 @@
 //Import react/redux stuff
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 //Import all required actions to connect to this component
-import {toggleSidebar} from '../../actions';
+import { toggleSidebar } from '../../actions';
 
 //The test component is an example/template component
 class MenuBarComponent extends Component {
+
     //Render function
     render() {
+        let buttonClass = this.props.sidebarActive ? "menu-btn menu-btn-active" : "menu-btn";
         return (
-            <div onClick={this.props.toggleSidebar} className={"hamburger-wrap"}>
-              x
+            <div onClick={this.props.toggleSidebar} className={buttonClass}>
+              <span className="menu-btn-icon"></span>
             </div>
         )
     }
