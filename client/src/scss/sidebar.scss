@@ -1,4 +1,5 @@
 @import 'media-breakpoints.scss';
+
 .sidebar-wrap {
     font-family: "Noto Sans", Arial, sans-serif;
     font-weight: bold;
@@ -7,7 +8,7 @@
     z-index: 1;
     width: 75%;
     margin: 0;
-    padding: 90px 40px 0px 40px;
+    padding: 90px 40px 0;
     background-color: $color-white;
     top: 0;
     right: 0;
@@ -22,4 +23,14 @@
 
 .sidebar-active {
     transform: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    display: block;
+    color: $color-dark;
+}
+
+.nav-link-active {
+    color: $color-primary;
 }

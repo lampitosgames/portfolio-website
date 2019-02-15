@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { withRouter, Route } from 'react-router-dom';
 import { viewportUpdate } from './actions';
 //Import scss file
 import './scss/index.scss';
@@ -42,15 +42,14 @@ class App extends Component {
     //
     render() {
         let contentWrapClass = this.props.sidebarActive ? "content-wrap content-wrap-sidebar-active" : "content-wrap";
+        console.dir(this.props);
         return (
             <div className={"app-container"}>
-                <SidebarComponent sidebarActive={this.props.sidebarActive}/>
+                <SidebarComponent sidebarActive={this.props.sidebarActive} location={this.props.location}/>
                 <div className={contentWrapClass}>
                     <MenuBarComponent/>
-                    <Switch>
-                        <Route exact path="/" component={HomePageComponent}/>
-                        <Route path="/about" component={AboutComp}/>
-                    </Switch>
+                    <Route exact path="/" component={HomePageComponent}/>
+                    <Route path="/about" component={AboutComp}/>
                 </div>
             </div>
         );
@@ -69,4 +68,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

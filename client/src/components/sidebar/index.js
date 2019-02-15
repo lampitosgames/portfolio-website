@@ -1,11 +1,8 @@
 //Import react/redux stuff
-import React, {
-    Component
-} from 'react';
-import {
-    connect
-} from 'react-redux';
-import {toggleSidebar} from '../../actions';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { toggleSidebar } from '../../actions';
 
 //The test component is an example/template component
 class SidebarComponent extends Component {
@@ -20,10 +17,10 @@ class SidebarComponent extends Component {
         let sidebarClass = this.props.sidebarActive ? "sidebar-wrap sidebar-active" : "sidebar-wrap";
         return (
             <div className={sidebarClass}>
-                <div>Home</div>
-                <div>Work</div>
-                <div>About</div>
-                <div>Resume</div>
+                <NavLink className={"nav-link"} activeClassName={"nav-link-active"} exact to="/">Home</NavLink>
+                <NavLink className={"nav-link"} activeClassName={"nav-link-active"} to="/work">Work</NavLink>
+                <NavLink className={"nav-link"} activeClassName={"nav-link-active"} to="/about">About</NavLink>
+                <NavLink className={"nav-link"} activeClassName={"nav-link-active"} to="/resume">Resume</NavLink>
             </div>
         )
     }
