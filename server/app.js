@@ -1,23 +1,15 @@
 // Node modules
 import express from 'express';
-import path from 'path';
 import http from 'http';
 // Custom express router
 import router from './router';
 
 // Import state
-import AppState, { DefaultUser } from './state';
-
-// Load environment variables if in production
-// Needed for twitter API keys.  We don't want to store sensitive info on a public
-// git repo
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').load();
-}
+// import AppState, { DefaultUser } from './state';
 
 // Select the port from an environment variable or default to 5000
 // This is needed for Heroku
-const port = (process.env.PORT || 5000);
+const port = process.env.PORT || process.env.NODE_PORT || 5000;
 
 // Express app
 const app = express();

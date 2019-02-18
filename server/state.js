@@ -18,10 +18,6 @@ export class DefaultUser {
     // Return this object so we can daisy chain functions
     return this;
   }
-
-  SayHello() {
-    return 'Hello!';
-  }
 }
 
 // Test function

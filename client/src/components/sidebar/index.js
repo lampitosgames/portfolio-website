@@ -6,38 +6,32 @@ import { toggleSidebar } from '../../actions';
 
 //The test component is an example/template component
 class SidebarComponent extends Component {
-    //Post-construction custom javascript to run
-    componentDidMount() {}
-
-    //Destructor
-    componentWillUnmount() {}
-
-    //Render function
-    render() {
-        let sidebarClass = this.props.sidebarActive ? "sidebar-wrap sidebar-active" : "sidebar-wrap";
-        return (
-            <div className={sidebarClass}>
-                <NavLink className={"nav-link"} activeClassName={"nav-link-active"} exact to="/">Home</NavLink>
-                <NavLink className={"nav-link"} activeClassName={"nav-link-active"} to="/work">Work</NavLink>
-                <NavLink className={"nav-link"} activeClassName={"nav-link-active"} to="/about">About</NavLink>
-                <NavLink className={"nav-link"} activeClassName={"nav-link-active"} to="/resume">Resume</NavLink>
-            </div>
-        )
-    }
+  //Render function
+  render() {
+    let sidebarClass = this.props.sidebarActive ? "sidebar-wrap sidebar-active" : "sidebar-wrap";
+    return (
+      <div className={sidebarClass}>
+        <NavLink className={"nav-link"} activeClassName={"nav-link-active"} exact to="/">Home</NavLink>
+        <NavLink className={"nav-link"} activeClassName={"nav-link-active"} to="/work">Work</NavLink>
+        <NavLink className={"nav-link"} activeClassName={"nav-link-active"} to="/about">About</NavLink>
+        <NavLink className={"nav-link"} activeClassName={"nav-link-active"} to="/resume">Resume</NavLink>
+      </div>
+    )
+  }
 }
 
 //Map state from the store to the component's props variable
 const mapStateToProps = (state) => {
-    return {};
+  return {};
 }
 
 //Map action dispatch functions to the component's props variable
 const mapDispatchToProps = (dispatch) => {
-    return {
-        toggleSidebar: () => {
-            dispatch(toggleSidebar());
-        }
-    };
+  return {
+    toggleSidebar: () => {
+      dispatch(toggleSidebar());
+    }
+  };
 }
 
 //Use redux to fully connect everything up
