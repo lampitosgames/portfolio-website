@@ -9,13 +9,8 @@ import Utils from './js/Utils.js';
 //Import components
 import MenuBarComponent from './components/menu-bar';
 import SidebarComponent from './components/sidebar';
-import HomePageComponent from './components/pages/home';
-
-const AboutComp = () => {
-  return (
-    <div>testing</div>
-  )
-}
+import HomePageComponent from './components/pages/home-page';
+import AboutPageComponent from './components/pages/about-page';
 
 class App extends Component {
   componentDidMount() {
@@ -48,7 +43,7 @@ class App extends Component {
         <div className={contentWrapClass}>
           <MenuBarComponent/>
           <Route exact path="/" component={HomePageComponent}/>
-          <Route path="/about" component={AboutComp}/>
+          <Route path="/about" component={AboutPageComponent}/>
         </div>
       </div>
     );

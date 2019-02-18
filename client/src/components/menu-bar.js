@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //Import all required actions to connect to this component
-import { toggleSidebar } from '../../actions';
+import { toggleSidebar } from '../actions';
 
 //The test component is an example/template component
 class MenuBarComponent extends Component {

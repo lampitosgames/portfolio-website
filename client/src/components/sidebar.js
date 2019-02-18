@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { toggleSidebar } from '../../actions';
+import { toggleSidebar } from '../actions';
 
 //The test component is an example/template component
 class SidebarComponent extends Component {

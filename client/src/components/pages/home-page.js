@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GameCanvasComponent from '../../GameCanvasComponent.js';
+import GameCanvasComponent from '../GameCanvasComponent.js';
 
 export default class HomePageComponent extends Component {
   render() {
